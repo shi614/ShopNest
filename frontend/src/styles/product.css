@@ -1,0 +1,139 @@
+/* ===== Product grid (wrap your ProductCards in <div className="product-grid">) ===== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px;
+    box-sizing: border-box;
+}
+
+/* ===== Product card ===== */
+.product-card {
+    /* colours come from the palette in global.css */
+    --card-text: var(--text);
+    --card-muted: var(--muted);
+    --card-accent: var(--accent);
+    --card-accent-hover: var(--accent-hover);
+    --card-border: var(--border);
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(129, 11, 56, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--tan);
+    box-shadow: 0 10px 24px rgba(129, 11, 56, 0.12);
+}
+
+/* ----- Image ----- */
+.product-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background: var(--cream-light); /* shows while the image loads / if it's missing */
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.04);
+}
+
+/* ----- Info ----- */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 8px;
+    padding: 16px;
+}
+
+.product-name {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--card-text);
+    /* keep long names to 2 lines so all cards line up */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.8em;
+}
+
+.product-price {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--price);
+}
+
+/* ----- Button ----- */
+.view-details-button {
+    margin-top: auto; /* pushes button to the bottom of the card */
+    display: block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: var(--card-accent);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.view-details-button:hover {
+    background: var(--card-accent-hover);
+}
+
+.view-details-button:focus-visible {
+    outline: 2px solid var(--card-accent);
+    outline-offset: 2px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .product-grid {
+        gap: 16px;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on phones */
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .product-info {
+        padding: 12px;
+        gap: 6px;
+    }
+
+    .product-name {
+        font-size: 0.9rem;
+    }
+
+    .product-price {
+        font-size: 1.05rem;
+    }
+
+    .view-details-button {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+}

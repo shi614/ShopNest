@@ -1,0 +1,273 @@
+/* ===== Home page ===== */
+.home {
+    /* colours come from the palette in global.css */
+    --home-text: var(--text);
+    --home-muted: var(--muted);
+    --home-accent: var(--accent);
+    --home-accent-hover: var(--accent-hover);
+    --home-accent-soft: var(--accent-soft);
+    --home-border: var(--border);
+
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--home-text);
+}
+
+/* ----- Hero ----- */
+.hero {
+    padding: 72px 32px;
+    /* wine gradient with a soft tan glow in the corner */
+    background:
+        radial-gradient(circle at 85% 20%, rgba(220, 195, 170, 0.35), transparent 45%),
+        linear-gradient(135deg, var(--primary) 0%, #951C4B 60%, var(--primary-light) 100%);
+    color: #ffffff;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    margin: 0 0 16px;
+    font-size: 2.75rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+}
+
+.hero p {
+    margin: 0 0 32px;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--cream);
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 999px;
+    background: var(--cream);
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(84, 26, 26, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.hero-btn:hover {
+    background: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(84, 26, 26, 0.3);
+}
+
+/* ----- Products section ----- */
+.home-products {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 0 0;
+}
+
+.section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 32px;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.product-count {
+    font-size: 0.9rem;
+    color: var(--home-muted);
+}
+
+/* Category chips */
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 20px 32px 0;
+}
+
+.category-chip {
+    padding: 8px 16px;
+    border: 1px solid var(--home-border);
+    border-radius: 999px;
+    background: var(--surface);
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--home-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.category-chip:hover {
+    border-color: var(--tan);
+    background: var(--cream-light);
+    color: var(--home-accent);
+}
+
+.category-chip.active {
+    border-color: var(--home-accent);
+    background: var(--home-accent);
+    color: #ffffff;
+}
+
+/* ----- Loading skeletons ----- */
+.skeleton-card {
+    overflow: hidden;
+    border: 1px solid var(--home-border);
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.skeleton-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+}
+
+.skeleton {
+    background: linear-gradient(90deg, var(--cream-light) 25%, var(--cream) 37%, var(--cream-light) 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease infinite;
+}
+
+.skeleton-image {
+    aspect-ratio: 1 / 1;
+}
+
+.skeleton-line {
+    height: 14px;
+    border-radius: 6px;
+}
+
+.skeleton-line.short {
+    width: 40%;
+}
+
+.skeleton-button {
+    height: 38px;
+    margin-top: 6px;
+    border-radius: 8px;
+}
+
+@keyframes shimmer {
+    0%   { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
+}
+
+/* ----- Error / empty states ----- */
+.home-state {
+    max-width: 480px;
+    margin: 48px auto;
+    padding: 40px 24px;
+    border: 1px dashed var(--tan);
+    border-radius: 12px;
+    background: var(--surface);
+    text-align: center;
+}
+
+.home-state h3 {
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+}
+
+.home-state p {
+    margin: 0 0 20px;
+    color: var(--home-muted);
+}
+
+.home-error {
+    border-color: #fecaca;
+    background: #fef2f2;
+}
+
+.home-error h3 {
+    color: #b91c1c;
+}
+
+.home-btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    background: var(--home-accent);
+    font: inherit;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.home-btn:hover {
+    background: var(--home-accent-hover);
+}
+
+.hero-btn:focus-visible,
+.category-chip:focus-visible,
+.home-btn:focus-visible {
+    outline: 2px solid var(--home-accent);
+    outline-offset: 2px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .hero {
+        padding: 56px 16px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .home-products {
+        padding-top: 32px;
+    }
+
+    .section-header,
+    .category-filter {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .section-header h2 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-header,
+    .category-filter {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .category-filter {
+        flex-wrap: nowrap;
+        overflow-x: auto; /* chips scroll sideways on phones */
+        padding-bottom: 4px;
+    }
+
+    .category-chip {
+        flex-shrink: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skeleton {
+        animation: none;
+    }
+}
