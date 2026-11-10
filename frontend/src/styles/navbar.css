@@ -100,6 +100,19 @@
     outline-offset: 2px;
 }
 
+/* ----- Sign up button (filled, stands out next to Login) ----- */
+.navbar-links a.btn-signup,
+.navbar-links a.btn-signup.active {
+    background: var(--nav-accent);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.navbar-links a.btn-signup:hover {
+    background: var(--accent-hover);
+    color: #ffffff;
+}
+
 /* ----- Logout button ----- */
 .btn-logout {
     padding: 8px 16px;

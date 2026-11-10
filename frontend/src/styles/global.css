@@ -217,6 +217,25 @@ a {
     box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
+/* Field with a validation error */
+.input.input-error {
+    border-color: var(--danger);
+}
+
+.input.input-error:focus {
+    box-shadow: 0 0 0 3px var(--danger-soft);
+}
+
+.field-error {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #b91c1c;
+}
+
+.hint.hint-ok {
+    color: var(--success);
+}
+
 .hint {
     margin: 0;
     font-size: 0.8rem;

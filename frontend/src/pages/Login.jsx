@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { apiRequest } from '../utils/api';
+import { validateEmail } from '../utils/validation';
 import '../styles/pages.css';
 
 const Login = () => {
@@ -22,9 +23,19 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+
+        // Only check the email format and that a password was typed.
+        // (No minimum length here, so older accounts with shorter passwords can still log in.)
+        const emailError = validateEmail(form.email);
+        if (emailError) return setError(emailError);
+        if (!form.password) return setError('Please enter your password.');
+
         setSubmitting(true);
         try {
-            const data = await apiRequest('/api/auth/login', { method: 'POST', body: form });
+            const data = await apiRequest('/api/auth/login', {
+                method: 'POST',
+                body: { email: form.email.trim().toLowerCase(), password: form.password },
+            });
             login(data);
             navigate(redirectTo, { replace: true });
         } catch (err) {
